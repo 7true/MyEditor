@@ -6,4 +6,22 @@
         android:summary="Open a file at startup"
         android:title="Open" />
 
+    <EditTextPreference
+        android:defaultValue="14"
+        android:dialogTitle="Enter font size (from 10 to 32)"
+        android:key="@string/pref_size"
+        android:summary="Set new font size"
+        android:selectAllOnFocus="true"
+        android:inputType="numberSigned"
+        android:title="Font size" />
+
+    <ListPreference
+        android:key="@string/pref_style"
+        android:title="Стиль для шрифта"
+        android:summary="Устанавливает стиль для шрифта"
+        android:defaultValue="1"
+        android:entries="@array/text_style"
+        android:entryValues="@array/text_style"
+        android:dialogTitle="Выберите стиль для шрифта" />
+
 </PreferenceScreen>

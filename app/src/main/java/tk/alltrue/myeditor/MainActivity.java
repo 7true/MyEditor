@@ -2,6 +2,7 @@ package tk.alltrue.myeditor;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,7 +63,24 @@ public class MainActivity extends AppCompatActivity {
         if (prefs.getBoolean(getString(R.string.pref_openmode), false)) {
             openFile(FILENAME);
         }
+
+        float fSize = Float.parseFloat(prefs.getString(
+                getString(R.string.pref_size), "20"));
+        mEditText.setTextSize(fSize);
+
+
+        String regular = prefs.getString(getString(R.string.pref_style), "");
+        int typeface = Typeface.NORMAL;
+
+        if (regular.contains("Полужирный"))
+            typeface += Typeface.BOLD;
+
+        if (regular.contains("Курсив"))
+            typeface += Typeface.ITALIC;
+        mEditText.setTypeface(null, typeface);
+
     }
+
     private void openFile(String fileName) {
         try {
             InputStream inputStream = openFileInput(fileName);
